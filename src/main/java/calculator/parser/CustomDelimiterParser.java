@@ -10,6 +10,11 @@ public class CustomDelimiterParser implements DelimiterParser {
     private static final String END_CUSTOM_DELIMITER = "\n";
 
     @Override
+    public boolean canParse(String input) {
+        return input.startsWith(START_CUSTOM_DELIMITERS);
+    }
+
+    @Override
     public List<String> parser(String input) {
         input = input.replace("\\n", END_CUSTOM_DELIMITER);
 
