@@ -16,11 +16,11 @@ class InputAnalyzerTest {
     }
 
     @Test
-    @DisplayName("//로 시작하지 않으면 예외를 던진다.")
+    @DisplayName("//로 시작하지 않으면 false를 반환한다.")
     void testHasCustomDelimiter_InvalidPrefix() {
         InputAnalyzer analyzer = new InputAnalyzer("/;\\n1;2;3");
 
-        assertThrows(IllegalArgumentException.class, analyzer::hasCustomDelimiter);
+        assertFalse(analyzer.hasCustomDelimiter());
     }
 
     @Test
