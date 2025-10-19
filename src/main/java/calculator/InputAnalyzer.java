@@ -15,7 +15,10 @@ public class InputAnalyzer {
     }
 
     public boolean hasCustomDelimiter() {
-        validateStartsWithSlash();
+        if(!isStartOfCustomDelimiter()) {
+            return false;
+        }
+
         validateContainsNewLine();
 
         String customDelimiter = extractCustomDelimiter();
@@ -38,10 +41,8 @@ public class InputAnalyzer {
         return input;
     }
 
-    private void validateStartsWithSlash() {
-        if (!input.startsWith("//")) {
-            throw new IllegalArgumentException("잘못된 구분자 형식입니다. (시작이 // 아님)");
-        }
+    private boolean isStartOfCustomDelimiter() {
+        return input.startsWith("//");
     }
 
     private void validateContainsNewLine() {
